@@ -14,7 +14,7 @@ scrapy crawl crawler -O index.json
 
 ### Build TDIDF matrix and index
 
-Messages written to `stdin` are gossiped to peers:
+
 
 ```bash
 python tfidf_index.py
