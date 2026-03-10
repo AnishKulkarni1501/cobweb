@@ -1,7 +1,7 @@
 import scrapy
 from urllib.parse import urljoin, urlparse
 import re
-import subprocess
+
 
 class WebCrawler(scrapy.Spider):
 
@@ -65,5 +65,4 @@ class WebCrawler(scrapy.Spider):
 
         for link in absolute_links:
             yield scrapy.Request(link, callback=self.parse)
-    def closed(self,reason):
-        subprocess.run(["python", "tfidf_index.py","index.json"])
+    
