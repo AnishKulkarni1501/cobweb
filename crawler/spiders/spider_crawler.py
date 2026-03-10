@@ -1,5 +1,7 @@
 import scrapy
 from urllib.parse import urljoin, urlparse
+import re
+import subprocess
 
 class WebCrawler(scrapy.Spider):
 
@@ -27,10 +29,8 @@ class WebCrawler(scrapy.Spider):
 
         text_nodes = response.xpath("//p//text()").getall()
 
-        text = " ".join(
-            t.strip() for t in text_nodes
-            if len(t.strip()) > 40
-        )
+        text = " ".join(response.css("#mw-content-text p::text").getall())
+        text = re.sub(r"[^a-zA-Z ]", " ", text).lower()
 
         links = response.css("a::attr(href)").getall()
 
@@ -65,3 +65,5 @@ class WebCrawler(scrapy.Spider):
 
         for link in absolute_links:
             yield scrapy.Request(link, callback=self.parse)
+    def closed(self,reason):
+        subprocess.run(["python", "tfidf_index.py","index.json"])
