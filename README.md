@@ -3,7 +3,8 @@
 
 <p>Change allowed urls under spider_crawler.py to get more diverse web pages</p>
 <p>You can modify the settings.py <b>BUT NOTE:</b> requesting too many concurrent pages at a time may cause a crash/timeouts</p>
-## Usage
+
+### Usage
 
 ### Run crawler
 
