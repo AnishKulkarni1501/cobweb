@@ -31,7 +31,7 @@ Setting very high concurrency may lead to crashes or timeouts depending on your 
 
 ---
 
-## 🧑‍💻 Usage
+## Usage
 
 1. Run the crawler
 
@@ -43,7 +43,7 @@ scrapy crawl crawler -O index.json
 
 2. Build the TF-IDF index
 
-python pagerank.py
+python pagerank.py<br>
 python tfidf_index.py
 
 This step processes the crawled data and creates a searchable index.
